@@ -10,7 +10,7 @@ CREATE TABLE discoverer (
     lname VARCHAR(50), 
     PRIMARY KEY (id)
 );
-Stris
+
 CREATE TABLE star (
     id INT NOT NULL AUTO_INCREMENT, 
     name VARCHAR(50) NOT NULL,

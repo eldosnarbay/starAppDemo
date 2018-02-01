@@ -10,17 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/rest/categories")
+@RequestMapping("/categories")
 public class CategoryRecources {
 
     @Autowired
     private CategoryMapper categoryMapper;
 
+    @CrossOrigin
     @GetMapping("/all")
     public List<Category> getAll(){
         return categoryMapper.getAll();
     }
 
+    @CrossOrigin
     @PostMapping("/insert")
     public ResponseEntity insert(@RequestBody Category category){
 
@@ -33,6 +35,7 @@ public class CategoryRecources {
         return new ResponseEntity<>("Category created succesfully",  HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("/update/{id}")
     public ResponseEntity update(@PathVariable Integer id, @RequestBody Category category){
 
@@ -53,6 +56,7 @@ public class CategoryRecources {
         return ResponseEntity.ok().build();
     }
 
+    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Integer id){
         Integer delId = categoryMapper.delete(id);
