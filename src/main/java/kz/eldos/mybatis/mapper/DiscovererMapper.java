@@ -15,10 +15,18 @@ public interface DiscovererMapper {
     })
     List<Discoverer> getAll();
 
+    @Select("SELECT * FROM discoverer WHERE id = #{id}")
+    @Results({
+            @Result(property = "firstName", column = "fname"),
+            @Result(property = "lastName", column = "lname")
+    })
+    Discoverer findById(Integer id);
+
     @Insert("INSERT INTO discoverer(fname, lname) VALUES (#{firstName}, #{lastName})")
     void insert(Discoverer discoverer);
 
     @Update("UPDATE discoverer SET fname = #{firstName}, lname = #{lastName} WHERE id = #{id}")
+    @Options(useGeneratedKeys = true, keyProperty = "#{id}", keyColumn = "id")
     void update(Discoverer discoverer);
 
     @Delete("DELETE FROM discoverer WHERE id = #{id}")

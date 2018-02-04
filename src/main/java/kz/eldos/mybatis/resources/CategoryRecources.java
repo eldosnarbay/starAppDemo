@@ -17,10 +17,11 @@ public class CategoryRecources {
     private CategoryMapper categoryMapper;
 
     @CrossOrigin
-    @GetMapping("/all")
+    @GetMapping("")
     public List<Category> getAll(){
         return categoryMapper.getAll();
     }
+
 
     @CrossOrigin
     @PostMapping("/insert")

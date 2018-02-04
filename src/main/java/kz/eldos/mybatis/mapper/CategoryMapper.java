@@ -11,6 +11,9 @@ public interface CategoryMapper {
     @Select("SELECT * FROM category")
     List<Category> getAll();
 
+    @Select("SELECT * FROM category WHERE id = #{id}")
+    Category findById(Integer id);
+
     @Insert("INSERT INTO category(name) VALUES(#{name})")
     void insert(Category category);
 
