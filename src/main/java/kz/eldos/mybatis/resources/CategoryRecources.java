@@ -16,55 +16,52 @@ public class CategoryRecources {
     @Autowired
     private CategoryMapper categoryMapper;
 
-    @CrossOrigin
+    //get category list
     @GetMapping("")
     public List<Category> getAll(){
         return categoryMapper.getAll();
     }
 
 
-    @CrossOrigin
-    @PostMapping("/insert")
-    public ResponseEntity insert(@RequestBody Category category){
+//    @PostMapping("/insert")
+//    public ResponseEntity insert(@RequestBody Category category){
+//
+//        if(category == null){
+//            return ResponseEntity.noContent().build();
+//        }
+//
+//        categoryMapper.insert(category);
+//
+//        return new ResponseEntity<>("Category created succesfully",  HttpStatus.OK);
+//    }
 
-        if(category == null){
-            return ResponseEntity.noContent().build();
-        }
+//    @PostMapping("/update/{id}")
+//    public ResponseEntity update(@PathVariable Integer id, @RequestBody Category category){
+//
+//        if(id == null){
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        if(category == null){
+//            return ResponseEntity.noContent().build();
+//        }
+//
+//        if(category.getId() == null){
+//            category.setId(id);
+//        }
+//
+//        categoryMapper.update(category);
+//
+//        return ResponseEntity.ok().build();
+//    }
 
-        categoryMapper.insert(category);
-
-        return new ResponseEntity<>("Category created succesfully",  HttpStatus.OK);
-    }
-
-    @CrossOrigin
-    @PostMapping("/update/{id}")
-    public ResponseEntity update(@PathVariable Integer id, @RequestBody Category category){
-
-        if(id == null){
-            return ResponseEntity.notFound().build();
-        }
-
-        if(category == null){
-            return ResponseEntity.noContent().build();
-        }
-
-        if(category.getId() == null){
-            category.setId(id);
-        }
-
-        categoryMapper.update(category);
-
-        return ResponseEntity.ok().build();
-    }
-
-    @CrossOrigin
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable Integer id){
-        Integer delId = categoryMapper.delete(id);
-        if(delId == 0){
-            return ResponseEntity.notFound().build();
-        }
-
-        return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
-    }
+//    @DeleteMapping("/delete/{id}")
+//    public ResponseEntity delete(@PathVariable Integer id){
+//        Integer delId = categoryMapper.delete(id);
+//        if(delId == 0){
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        return new ResponseEntity<>("Successfully deleted", HttpStatus.OK);
+//    }
 }

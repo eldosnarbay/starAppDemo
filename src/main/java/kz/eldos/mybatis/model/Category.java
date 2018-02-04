@@ -1,6 +1,8 @@
 package kz.eldos.mybatis.model;
 
 
+import java.util.Objects;
+
 public class Category {
     /*
         Fields
@@ -9,7 +11,7 @@ public class Category {
     private String name;
 
     /*
-        Entity Basics
+     Entity Basics
      */
     @Override
     public boolean equals(Object obj) {
@@ -24,6 +26,11 @@ public class Category {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override

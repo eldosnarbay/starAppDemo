@@ -6,7 +6,6 @@ import kz.eldos.mybatis.mapper.StarMapper;
 import kz.eldos.mybatis.model.Category;
 import kz.eldos.mybatis.model.Discoverer;
 import kz.eldos.mybatis.model.Star;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,24 +23,7 @@ public class StarResource {
     @Autowired private CategoryMapper categoryMapper;
     @Autowired private DiscovererMapper discovererMapper;
 
-    @CrossOrigin
-    @GetMapping("/all")
-    public List<Star> getAll(){
-        return starMapper.getAll();
-    }
-
-    @CrossOrigin
-    @PostMapping("/insert")
-    public ResponseEntity create(@RequestBody Star star){
-        if(star == null){
-            return ResponseEntity.noContent().build();
-        }
-
-        starMapper.insert(star);
-        return new ResponseEntity<>("Created", HttpStatus.OK);
-    }
-
-    @CrossOrigin
+    //get stars
     @GetMapping("")
     public List<Map<String, String>> getStars(){
         List<Map<String, String>> list = new ArrayList<>();
@@ -66,7 +48,16 @@ public class StarResource {
         return list;
     }
 
-    @CrossOrigin
+    @PostMapping("/insert")
+    public ResponseEntity create(@RequestBody Star star){
+        if(star == null){
+            return ResponseEntity.noContent().build();
+        }
+
+        starMapper.insert(star);
+        return new ResponseEntity<>("Created", HttpStatus.OK);
+    }
+
     @PostMapping("/update/{id}")
     public ResponseEntity update(@PathVariable Integer id, @RequestBody Star star){
         if(id == null){
@@ -86,7 +77,6 @@ public class StarResource {
         return new ResponseEntity<>("Updated", HttpStatus.OK);
     }
 
-    @CrossOrigin
     @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Integer id){
         Integer delId = starMapper.delete(id);
