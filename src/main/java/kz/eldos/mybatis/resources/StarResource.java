@@ -24,6 +24,7 @@ public class StarResource {
     @Autowired private DiscovererMapper discovererMapper;
 
     //get stars
+    @CrossOrigin
     @GetMapping("")
     public List<Map<String, String>> getStars(){
         List<Map<String, String>> list = new ArrayList<>();
