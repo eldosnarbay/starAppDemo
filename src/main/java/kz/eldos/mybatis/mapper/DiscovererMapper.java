@@ -23,10 +23,10 @@ public interface DiscovererMapper {
     Discoverer findById(Integer id);
 
     @Insert("INSERT INTO discoverer(fname, lname) VALUES (#{firstName}, #{lastName})")
+    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void insert(Discoverer discoverer);
 
     @Update("UPDATE discoverer SET fname = #{firstName}, lname = #{lastName} WHERE id = #{id}")
-    @Options(useGeneratedKeys = true, keyProperty = "#{id}", keyColumn = "id")
     void update(Discoverer discoverer);
 
     @Delete("DELETE FROM discoverer WHERE id = #{id}")
