@@ -27,7 +27,6 @@ public class DiscovererResource {
         }
 
         discovererMapper.insert(discoverer);
-        System.err.println(discoverer.getId());
         return new ResponseEntity<>("Successfully inserted", HttpStatus.OK);
     }
 
