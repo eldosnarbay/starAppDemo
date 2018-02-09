@@ -35,3 +35,6 @@ $ git clone https://github.com/eldosnarbay/starapp-frontend.git
 $ npm install
 $ ng serve --open
 ```
+
+##### Заметка
+Если вы хотите тестировать запросы, например через через postman выберите тип авторизации Basic, и введите в форме логина ```eldos``` и ```password```
